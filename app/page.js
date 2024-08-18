@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { itemPrices, priceList } from './items';
+import axios from 'axios';
+import Link from 'next/link';
 
 const Home = () => {
   const [customerName, setCustomerName] = useState('');
@@ -65,7 +67,9 @@ const Home = () => {
     setTotal(newTotal);
   };
 
-  const finalizeBill = () => {
+  const finalizeBill = (e) => {
+    e.preventDefault()
+    axios.post("/api/bill",{no:customerName,items:addedItems,total})
     const doc = new jsPDF();
 
     doc.text("HOTEL BITTO", 75, 10);
@@ -100,6 +104,7 @@ const Home = () => {
       </div>
       <h3>Annabhau Sathe, Near Kalash Lawns, Kopargaon, Pincode-423601</h3>
       <button onClick={handleNewBill}>New Bill</button>
+      <button ><Link href="/bills">History</Link></button>
       {showBillSection && (
         <BillSection
           customerName={customerName}
