@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { itemPrices, priceList } from './items';
+import { drinkList, itemPrices, nonList, priceList } from './items';
 import axios from 'axios';
 import Link from 'next/link';
 
@@ -159,6 +159,17 @@ const ItemSelection = ({ handleItemSelection, addItemToBill, selectedItem, added
     <h2>Non-Veg Items</h2>
     <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
       <option value="" disabled>Select Non-Veg Item</option>
+      {nonList.map((data)=>{
+        return(
+          <option value={data.dish}>{data.dish}:{data.price}</option>
+        )
+      })}
+      {/* Add other Non-Veg options here */}
+    </select>
+    <button onClick={addItemToBill}>Add</button>
+    <h2>Veg Items</h2>
+    <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
+      <option value="" disabled>Select Veg Item</option>
       {priceList.map((data)=>{
         return(
           <option value={data.dish}>{data.dish}:{data.price}</option>
@@ -167,8 +178,18 @@ const ItemSelection = ({ handleItemSelection, addItemToBill, selectedItem, added
       {/* Add other Non-Veg options here */}
     </select>
     <button onClick={addItemToBill}>Add</button>
+    <h2>Drink Items</h2>
+    <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
+      <option value="" disabled>Select Drink Item</option>
+      {drinkList.map((data)=>{
+        return(
+          <option value={data.dish}>{data.dish}:{data.price}</option>
+        )
+      })}
+      {/* Add other Non-Veg options here */}
+    </select>
+    <button onClick={addItemToBill}>Add</button>
 
-    <h2>Veg Items</h2>
 
     <div id="items-list">
       {addedItems.map((item) => (

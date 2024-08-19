@@ -1,15 +1,4 @@
 export const itemPrices = {
-    "MUTTON SUKKA": 110,
-    "MUTTON FRY": 120,
-    "MUTTON MASALA": 110,
-    "MUTTON BUTTER": 150,
-    "MUTTON MOGHLAI": 140,
-    "MUTTON KOLHAPURI": 140,
-    "MUTTON KADAI": 180,
-    "MUTTON HANDI": 180,
-    "MUTTON LIVER SUKKHA": 110,
-    "MUTTON LIVER MASALA": 110,
-    "MUTTON LIVER FRY": 120,
     "VAJARI MASALA": 90,
     "VAJARI FRY": 100,
     "Shahi Paneer": 220,
@@ -98,6 +87,9 @@ export const itemPrices = {
     "Chole Samosa": 50,
     "Pani Puri": 25,
     "Batata Vada": 15,
+}
+
+const drinkItem={
     "Water bottle": 20,
     "Tea": 10,
     "Milk": 25,
@@ -108,8 +100,32 @@ export const itemPrices = {
     "Ice Cream": 20,
     "Juice": 20
 };
+const NONitem={
+    "MUTTON SUKKA": 110,
+    "MUTTON FRY": 120,
+    "MUTTON MASALA": 110,
+    "MUTTON BUTTER": 150,
+    "MUTTON MOGHLAI": 140,
+    "MUTTON KOLHAPURI": 140,
+    "MUTTON KADAI": 180,
+    "MUTTON HANDI": 180,
+    "MUTTON LIVER SUKKHA": 110,
+    "MUTTON LIVER MASALA": 110,
+    "MUTTON LIVER FRY": 120,
+   
+}
 export const priceList = Object.entries(itemPrices).map(([dish, price]) => ({
     dish,
     price
   }));
+  
+export const drinkList = Object.entries(drinkItem).map(([dish, price]) => ({
+    dish,
+    price
+  }));
+export const nonList = Object.entries(NONitem).map(([dish, price]) => ({
+    dish,
+    price
+  }));
+
   
