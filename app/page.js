@@ -13,6 +13,8 @@ const Home = () => {
   const [showBillSection, setShowBillSection] = useState(false);
   const [showItemSelection, setShowItemSelection] = useState(false);
   const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem1, setSelectedItem1] = useState('');
+  const [selectedItem2, setSelectedItem2] = useState('');
 
   const handleNewBill = () => {
     setShowBillSection(true);
@@ -27,6 +29,12 @@ const Home = () => {
   };
 
   const handleItemSelection = (event) => {
+    setSelectedItem(event.target.value);
+  };
+  const handleItemSelection1 = (event) => {
+    setSelectedItem(event.target.value);
+  };
+  const handleItemSelection2 = (event) => {
     setSelectedItem(event.target.value);
   };
 
@@ -51,6 +59,50 @@ const Home = () => {
     setAddedItems(newAddedItems);
     updateTotal(newAddedItems);
     setSelectedItem(''); // Reset selected item after adding
+  };
+  const addItemToBill1 = () => {
+    const itemName = selectedItem1;
+    const price = itemPrices[itemName];
+
+    if (!itemName) {
+      alert('Please select an item.');
+      return;
+    }
+
+    const existingItemIndex = addedItems.findIndex(item => item.name === itemName);
+    let newAddedItems = [...addedItems];
+
+    if (existingItemIndex >= 0) {
+      newAddedItems[existingItemIndex].quantity += 1;
+    } else {
+      newAddedItems.push({ name: itemName, price: price, quantity: 1 });
+    }
+
+    setAddedItems(newAddedItems);
+    updateTotal(newAddedItems);
+    setSelectedItem1(''); // Reset selected item after adding
+  };
+  const addItemToBill2 = () => {
+    const itemName = selectedItem2;
+    const price = itemPrices[itemName];
+
+    if (!itemName) {
+      alert('Please select an item.');
+      return;
+    }
+
+    const existingItemIndex = addedItems.findIndex(item => item.name === itemName);
+    let newAddedItems = [...addedItems];
+
+    if (existingItemIndex >= 0) {
+      newAddedItems[existingItemIndex].quantity += 1;
+    } else {
+      newAddedItems.push({ name: itemName, price: price, quantity: 1 });
+    }
+
+    setAddedItems(newAddedItems);
+    updateTotal(newAddedItems);
+    setSelectedItem2(''); // Reset selected item after adding
   };
 
   const updateItemTotal = (itemName, quantity) => {
@@ -112,8 +164,12 @@ const Home = () => {
           handleStartBill={handleStartBill}
           showItemSelection={showItemSelection}
           handleItemSelection={handleItemSelection}
+          handleItemSelection1={handleItemSelection1}
+          handleItemSelection2={handleItemSelection2}
           addItemToBill={addItemToBill}
           selectedItem={selectedItem}
+          selectedItem1={selectedItem1}
+          selectedItem2={selectedItem2}
           addedItems={addedItems}
           updateItemTotal={updateItemTotal}
           total={total}
@@ -124,7 +180,7 @@ const Home = () => {
   );
 };
 
-const BillSection = ({ customerName, setCustomerName, handleStartBill, showItemSelection, handleItemSelection, addItemToBill, selectedItem, addedItems, updateItemTotal, total, finalizeBill }) => (
+const BillSection = ({ customerName, setCustomerName, handleStartBill, showItemSelection, handleItemSelection,handleItemSelection1,handleItemSelection2, addItemToBill, selectedItem,selectedItem1,selectedItem2, addedItems, updateItemTotal, total, finalizeBill }) => (
   <>
     {!showItemSelection && (
       <div id="customer-info">
@@ -143,8 +199,12 @@ const BillSection = ({ customerName, setCustomerName, handleStartBill, showItemS
     {showItemSelection && (
       <ItemSelection
         handleItemSelection={handleItemSelection}
+        handleItemSelection1={handleItemSelection1}
+        handleItemSelection2={handleItemSelection2}
         addItemToBill={addItemToBill}
         selectedItem={selectedItem}
+        selectedItem1={selectedItem1}
+        selectedItem2={selectedItem2}
         addedItems={addedItems}
         updateItemTotal={updateItemTotal}
         total={total}
@@ -154,7 +214,7 @@ const BillSection = ({ customerName, setCustomerName, handleStartBill, showItemS
   </>
 );
 
-const ItemSelection = ({ handleItemSelection, addItemToBill, selectedItem, addedItems, updateItemTotal, total, finalizeBill }) => (
+const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSelection2, addItemToBill, selectedItem,selectedItem1,selectedItem2, addedItems, updateItemTotal, total, finalizeBill }) => (
   <div id="item-selection">
     <h2>Non-Veg Items</h2>
     <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
@@ -168,7 +228,7 @@ const ItemSelection = ({ handleItemSelection, addItemToBill, selectedItem, added
     </select>
     <button onClick={addItemToBill}>Add</button>
     <h2>Veg Items</h2>
-    <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
+    <select id="non-veg-items" value={selectedItem1} onChange={handleItemSelection1}>
       <option value="" disabled>Select Veg Item</option>
       {priceList.map((data)=>{
         return(
@@ -179,7 +239,7 @@ const ItemSelection = ({ handleItemSelection, addItemToBill, selectedItem, added
     </select>
     <button onClick={addItemToBill}>Add</button>
     <h2>Drink Items</h2>
-    <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
+    <select id="non-veg-items" value={selectedItem2} onChange={handleItemSelection2}>
       <option value="" disabled>Select Drink Item</option>
       {drinkList.map((data)=>{
         return(
