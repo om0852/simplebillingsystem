@@ -156,7 +156,7 @@ const Home = () => {
       </div>
       <h3>Annabhau Sathe, Near Kalash Lawns, Kopargaon, Pincode-423601</h3>
       <button onClick={handleNewBill}>New Bill</button>
-      <button ><Link href="/bills">History</Link></button>
+      <button className='mx-4' ><Link href="/bills">History</Link></button>
       {showBillSection && (
         <BillSection
           customerName={customerName}
@@ -216,7 +216,7 @@ const BillSection = ({ customerName, setCustomerName, handleStartBill, showItemS
 
 const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSelection2, addItemToBill, selectedItem,selectedItem1,selectedItem2, addedItems, updateItemTotal, total, finalizeBill }) => (
   <div id="item-selection">
-    <h2>Non-Veg Items</h2>
+    <h2 className='mt-4'>Non-Veg Items</h2>
     <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
       <option value="" disabled>Select Non-Veg Item</option>
       {nonList.map((data)=>{
@@ -227,7 +227,7 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
       {/* Add other Non-Veg options here */}
     </select>
     <button onClick={addItemToBill}>Add</button>
-    <h2>Veg Items</h2>
+    <h2 className='mt-4'>Veg Items</h2>
     <select id="non-veg-items" value={selectedItem1} onChange={handleItemSelection1}>
       <option value="" disabled>Select Veg Item</option>
       {priceList.map((data)=>{
@@ -238,7 +238,7 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
       {/* Add other Non-Veg options here */}
     </select>
     <button onClick={addItemToBill}>Add</button>
-    <h2>Drink Items</h2>
+    <h2 className='mt-4'>Drink Items</h2>
     <select id="non-veg-items" value={selectedItem2} onChange={handleItemSelection2}>
       <option value="" disabled>Select Drink Item</option>
       {drinkList.map((data)=>{
