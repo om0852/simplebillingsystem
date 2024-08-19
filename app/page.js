@@ -129,7 +129,7 @@ const Home = () => {
     doc.text(`TABLE NO.: ${customerName}`, 10, 30);
 
     const tableData = addedItems.map((item, index) => [
-      index + 1, item.name, `${item.quantity} x $${item.price.toFixed(2)}`, `$${(item.price * item.quantity).toFixed(2)}`
+      index + 1, item.name, `${item.quantity} x ₹${item.price.toFixed(2)}`, `₹${(item.price * item.quantity).toFixed(2)}`
     ]);
 
     doc.autoTable({
@@ -138,7 +138,7 @@ const Home = () => {
       startY: 40,
     });
 
-    doc.text(`TOTAL: $${total.toFixed(2)}`, 10, doc.autoTable.previous.finalY + 10);
+    doc.text(`TOTAL: ₹${total.toFixed(2)}`, 10, doc.autoTable.previous.finalY + 10);
     doc.text("Thank you! VISIT AGAIN..", 10, doc.autoTable.previous.finalY + 20);
 
     doc.save('bill.pdf');
@@ -255,7 +255,7 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
       {addedItems.map((item) => (
         <div className="item-row" key={item.name}>
           <span className="item-name">{item.name}</span>
-          <span className="item-price">${item.price.toFixed(2)}</span>
+          <span className="item-price">₹{item.price.toFixed(2)}</span>
           <select
             className="quantity-select"
             value={item.quantity}
@@ -270,7 +270,7 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
         </div>
       ))}
     </div>
-    <h2>Total: ${total.toFixed(2)}</h2>
+    <h2>Total: ₹{total.toFixed(2)}</h2>
     <button onClick={finalizeBill}>Finalize Bill</button>
   </div>
 );
