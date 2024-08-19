@@ -219,9 +219,9 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
     <h2 className='mt-4'>Non-Veg Items</h2>
     <select id="non-veg-items" value={selectedItem} onChange={handleItemSelection}>
       <option value="" disabled>Select Non-Veg Item</option>
-      {nonList.map((data)=>{
+      {nonList.map((data,index)=>{
         return(
-          <option value={data.dish}>{data.dish}:{data.price}</option>
+          <option key={index} value={data.dish}>{data.dish}:{data.price}</option>
         )
       })}
       {/* Add other Non-Veg options here */}
@@ -230,9 +230,9 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
     <h2 className='mt-4'>Veg Items</h2>
     <select id="non-veg-items" value={selectedItem1} onChange={handleItemSelection1}>
       <option value="" disabled>Select Veg Item</option>
-      {priceList.map((data)=>{
+      {priceList.map((data,index)=>{
         return(
-          <option value={data.dish}>{data.dish}:{data.price}</option>
+          <option key={index} value={data.dish}>{data.dish}:{data.price}</option>
         )
       })}
       {/* Add other Non-Veg options here */}
@@ -241,9 +241,9 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
     <h2 className='mt-4'>Drink Items</h2>
     <select id="non-veg-items" value={selectedItem2} onChange={handleItemSelection2}>
       <option value="" disabled>Select Drink Item</option>
-      {drinkList.map((data)=>{
+      {drinkList.map((data,index)=>{
         return(
-          <option value={data.dish}>{data.dish}:{data.price}</option>
+          <option key={index} value={data.dish}>{data.dish}:{data.price}</option>
         )
       })}
       {/* Add other Non-Veg options here */}
@@ -252,8 +252,8 @@ const ItemSelection = ({ handleItemSelection,handleItemSelection1,handleItemSele
 
 
     <div id="items-list">
-      {addedItems.map((item) => (
-        <div className="item-row" key={item.name}>
+      {addedItems.map((item,index) => (
+        <div key={index} className="item-row" >
           <span className="item-name">{item.name}</span>
           <span className="item-price">₹{item.price.toFixed(2)}</span>
           <select

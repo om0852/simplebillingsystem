@@ -23,8 +23,8 @@ const Page = () => {
         </thead>
         <tbody>
           {data &&
-            data.map((d) => (
-              <tr className="p-2 border-b-2">
+            data.map((d,index) => (
+              <tr key={index} className="p-2 border-b-2">
                 <td className="px-2">{d.no}</td>
                 <td className="px-2">
                   {d.items.map((name) => (
