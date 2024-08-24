@@ -212,7 +212,7 @@ const drinkItem={
     "Juice": 20,
     
 };
-const NONitem={
+const NONitem = {
     "MUTTON SUKKA": 110,
     "MUTTON FRY": 120,
     "MUTTON MASALA": 110,
@@ -224,8 +224,27 @@ const NONitem={
     "MUTTON LIVER SUKKHA": 110,
     "MUTTON LIVER MASALA": 110,
     "MUTTON LIVER FRY": 120,
-   
-}
+    "VAJARI MASALA": 90,
+    "VAJARI FRY": 100,
+    "KHEEMA MASALA": 90,
+    "KHEEMA FRY": 100,
+    "MUTTON BIRYANI": 150,
+    "MUTTON THALI": 180,
+    "EXTRA RASSA": 50,
+    "CHICKEN FRY": 120,
+    "CHICKEN SUKKHA": 110,
+    "CHICKEN MASALA": 110,
+    "CHICKEN BUTTER": 150,
+    "CHICKEN LIVER FRY": 120,
+    "CHICKEN MOGHLAI": 140,
+    "CHICKEN KOLHAPURI": 140,
+    "CHICKEN HANDI": 180,
+    "CHICKEN KADAI": 180,
+    "CHICKEN LIVER MASALA": 110,
+    "CHICKEN BIRYANI": 140,
+    "CHICKEN THALI": 180
+};
+
 export const priceList = Object.entries(VegIten).map(([dish, price]) => ({
     dish,
     price
